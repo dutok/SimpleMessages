@@ -1,4 +1,5 @@
 name: SimpleMessages
 main: SimpleMessages\SimpleMessages
-version: 0.1
+version: 1.0
+author: Dutok
 api: 1.0.0
