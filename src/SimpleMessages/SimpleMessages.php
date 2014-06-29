@@ -16,6 +16,7 @@ class SimpleMessages extends PluginBase{
     public $configFile;
 
     public function onEnable(){
+        @mkdir($this->getDataFolder());
         $this->configFile = (new Config($this->getDataFolder()."config.yml", Config::YAML, array(
             "messages" => array(
                 "message1",
