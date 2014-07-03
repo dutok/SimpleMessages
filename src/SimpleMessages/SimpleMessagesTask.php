@@ -10,18 +10,22 @@ namespace SimpleMessages;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\Server;
 use pocketmine\utils\TextFormat;
+use SimpleMessages\SimpleMessages;
 
 class SimpleMessagesTask extends PluginTask{
 
-    public $configFile;
+    public function __construct(SimpleMessages $plugin){
+        parent::__construct($plugin);
+        $this->plugin = $plugin;
+    }
 
     public function onRun($currentTick){
         $this->getOwner();
-        $this->configFile = $this->owner->getConfig()->getAll();
-        $messages = $this->configFile["messages"];
+        $this->plugin->configFile = $this->owner->getConfig()->getAll();
+        $messages = $this->plugin->configFile["messages"];
         $messagekey = array_rand($messages, 1);
         $message = $messages[$messagekey];
-        Server::getInstance()->broadcastMessage($this->configFile["color"]."[".$this->configFile["prefix"]."]: ".$message);
+        Server::getInstance()->broadcastMessage($this->plugin->configFile["color"]."[".$this->plugin->configFile["prefix"]."]: ".$message);
     }
 
 }

@@ -30,8 +30,10 @@ class SimpleMessages extends PluginBase{
             "prefix" => "Broadcast",
             "color" => "§f"
         )))->getAll();
+
         $time = intval($this->configFile["time"]) * 20;
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new SimpleMessagesTask($this), $time);
+
         $this->getLogger()->info("I've been enabled!");
     }
 
