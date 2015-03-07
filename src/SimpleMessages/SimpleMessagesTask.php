@@ -25,7 +25,7 @@ class SimpleMessagesTask extends PluginTask{
         $messages = $this->plugin->configFile["messages"];
         $messagekey = array_rand($messages, 1);
         $message = $messages[$messagekey];
-        Server::getInstance()->broadcastMessage($this->plugin->configFile["color"]."[".$this->plugin->configFile["prefix"]."]: ".$message);
+        $this->owner->getServer()->broadcastMessage($this->plugin->configFile["color"]."[".$this->plugin->configFile["prefix"]."]: ".$message);
     }
 
 }
