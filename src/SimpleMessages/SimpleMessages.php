@@ -18,6 +18,8 @@ class SimpleMessages extends PluginBase{
     public function onEnable(){
         @mkdir($this->getDataFolder());
         $this->configFile = (new Config($this->getDataFolder()."config.yml", Config::YAML, array(
+            "chat-messages" => "false",
+            "popup-messages" => "true",
             "messages" => array(
                 "message1",
                 "message2",
