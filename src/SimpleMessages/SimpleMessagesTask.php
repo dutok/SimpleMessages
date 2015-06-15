@@ -20,12 +20,22 @@ class SimpleMessagesTask extends PluginTask{
     }
 
     public function onRun($currentTick){
+        if($this->plugin->configFile["chat-messages"] == true){
         $this->getOwner();
         $this->plugin->configFile = $this->owner->getConfig()->getAll();
         $messages = $this->plugin->configFile["messages"];
         $messagekey = array_rand($messages, 1);
         $message = $messages[$messagekey];
         $this->owner->getServer()->broadcastMessage($this->plugin->configFile["color"]."[".$this->plugin->configFile["prefix"]."]: ".$message);
+    }elseif{
+        foreach($this->getServer()->getOnlinePlayers() as $players) {
+        $this->getOwner();
+        $this->plugin->configFile = $this->owner->getConfig()->getAll();
+        $messages = $this->plugin->configFile["messages"];
+        $messagekey = array_rand($messages, 1);
+        $message = $messages[$messagekey];
+        $players->sendPopup($this->plugin->configFile["color"]."[".$this->plugin->configFile["prefix"]."]: ".$message);
     }
-
+}
+}
 }
