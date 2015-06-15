@@ -28,7 +28,9 @@ class SimpleMessages extends PluginBase{
             ),
             "time" => "30",
             "prefix" => "Broadcast",
-            "color" => "§f"
+            "color" => "§f",
+            "chat-messages" => "false",
+            "popup-messages" => "true"
         )))->getAll();
 
         $time = intval($this->configFile["time"]) * 20;
